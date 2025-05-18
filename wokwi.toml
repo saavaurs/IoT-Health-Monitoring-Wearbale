@@ -1,0 +1,19 @@
+[wokwi]
+version = 1
+firmware = '.pio/build/adafruit_feather_esp32s3/firmware.bin'
+elf = '.pio/build/adafruit_feather_esp32s3/firmware.elf'
+
+[[components]]
+type = "potentiometer"
+id = "pot1"
+pin = 4
+
+[[components]]
+type = "pushbutton"
+id = "button1"
+pin = 2
+
+[[components]]
+type = "led"
+id = "led1"
+pin = 15

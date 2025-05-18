@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "author": "Sava Aurellia Salsabila",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-s3-devkitc-1", "id": "esp", "top": 57.42, "left": 138.97, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 358.34,
+      "left": 67.43,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 176.62, "left": 251.92, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 363.5, "left": 201.4, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 60, 
+      "left": 320,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 120, 
+      "left": 350,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 60, 
+      "left": 400,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "oled1:VCC", "esp:3V3.2", "red", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "imu1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "esp:21", "imu1:SDA", "green", [ "h0" ] ],
+    [ "imu1:INT", "esp:18", "cyan", [ "v0" ] ],
+    [ "btn1:1.l", "esp:2", "green", [ "h0" ] ],
+    [ "imu1:SCL", "esp:19", "magenta", [ "v0" ] ],
+    [ "oled1:SCL", "esp:19", "magenta", [ "v0" ] ],
+    [ "r2:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "btn1:2.l", "r2:2", "black", [ "h0" ] ],
+    [ "imu1:VCC", "esp:3V3.2", "red", [ "v0" ] ],
+    [ "pot1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.4", "black", [ "v0" ] ],
+    [ "pot1:SIG", "esp:4", "green", [ "v0" ] ],
+    [ "led1:A", "esp:15", "red", [ "v0" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
